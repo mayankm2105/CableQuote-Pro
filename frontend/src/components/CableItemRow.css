@@ -1,0 +1,140 @@
+.cable-row__sno {
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-h);
+  width: 3.5rem;
+}
+
+.cable-row__input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font: inherit;
+  background: #ffffff;
+  color: var(--text-h);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cable-row__input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+.cable-row__input--num {
+  text-align: right;
+}
+
+.cable-row__actions {
+  text-align: center;
+  width: 5.5rem;
+}
+
+.cable-row__remove {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #ffffff;
+  color: #ef4444; /* red to indicate remove */
+  transition: all 0.2s ease;
+}
+
+.cable-row__remove:hover:not(:disabled) {
+  background: #fef2f2;
+  border-color: #fca5a5;
+}
+
+.cable-row__remove:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  color: var(--text);
+  background: var(--bg);
+}
+
+/* Hybrid Dropdown Styles */
+.cable-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.cable-dropdown__menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  max-height: 250px;
+  overflow-y: auto;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  margin: 0;
+  padding: 0.5rem 0;
+  list-style: none;
+  z-index: 50;
+}
+
+.cable-dropdown__menu li {
+  padding: 0.6rem 0.8rem;
+  font-size: 0.95rem;
+  color: var(--text-h);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.cable-dropdown__menu li:hover {
+  background-color: #f0f4ff;
+  color: #1a73e8;
+}
+
+.cable-dropdown__empty {
+  color: var(--text) !important;
+  font-style: italic;
+  cursor: default !important;
+}
+
+.cable-dropdown__empty:hover {
+  background-color: transparent !important;
+  color: var(--text) !important;
+}
+
+.cable-dropdown__manual {
+  display: flex;
+  align-items: center;
+  margin-top: 0.25rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.6rem !important;
+  font-weight: 500;
+  color: #1a73e8 !important;
+}
+
+.cable-hybrid-wrapper {
+  display: flex;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.cable-list-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background: #f1f5f9;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: #475569;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.cable-list-btn:hover {
+  background: #e2e8f0;
+  color: #1a73e8;
+  border-color: #cbd5e1;
+}

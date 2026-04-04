@@ -1,0 +1,114 @@
+.view-quotations {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.quote-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+}
+
+.quote-card__header {
+  background: #e8f0fe;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.quote-card__header h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #1a73e8;
+}
+
+.quote-card__body.p-0 {
+  padding: 0;
+}
+
+.quote-msg {
+  margin: 1rem;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.quote-msg--error {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #f87171;
+}
+
+/* Table */
+.quote-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.quote-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.quote-table th,
+.quote-table td {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.quote-table th {
+  font-weight: 600;
+  color: var(--text-h);
+  background: #ffffff;
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+}
+
+.quote-table tr:nth-child(even) {
+  background: #f0f4ff;
+}
+
+.quote-table tr:nth-child(odd) {
+  background: #ffffff;
+}
+
+.quote-table tr:hover td {
+  background: rgba(26, 115, 232, 0.04);
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.text-blue {
+  color: #1a73e8;
+}
+
+.quote-download-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  color: #1a73e8;
+  border: 1px solid #1a73e8;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.quote-download-btn:hover {
+  background: #e8f0fe;
+}

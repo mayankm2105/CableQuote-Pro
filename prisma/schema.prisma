@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+}
+
+model FinancialYear {
+  id         Int      @id @default(autoincrement())
+  label      String   @unique @db.VarChar(10) // e.g. "26-27"
+  start_date DateTime @db.Date
+  end_date   DateTime @db.Date
+  counter    Int      @default(0)
+
+  quotations Quotation[]
+
+  @@map("financial_years")
+}
+
+model Quotation {
+  id              Int      @id @default(autoincrement())
+  tag             String   @unique @db.VarChar(50) // e.g. QTO/26-27/GMI/1
+  fy_id           Int
+  serial_number   Int
+  client_name     String   @db.VarChar(255)
+  client_unit     String   @db.VarChar(255)
+  client_address  String   @db.Text
+  enquiry_no      String   @db.VarChar(100)
+  date            DateTime @db.Date
+  created_at      DateTime @default(now())
+
+  financial_year  FinancialYear @relation(fields: [fy_id], references: [id])
+  cable_items     CableItem[]
+
+  @@index([fy_id])
+  @@map("quotations")
+}
+
+model CableItem {
+  id               Int      @id @default(autoincrement())
+  quotation_id     Int
+  sno              Int                        // row order within quotation
+  description      String   @db.Text
+  quantity_meters  Int
+  rate_per_meter   Decimal  @db.Decimal(10, 2)
+
+  quotation        Quotation @relation(fields: [quotation_id], references: [id], onDelete: Cascade)
+
+  @@index([quotation_id])
+  @@map("cable_items")
+}
+
+model Company {
+  id         Int      @id @default(autoincrement())
+  unit_id    String   @unique @db.VarChar(255)
+  name       String   @db.VarChar(255)
+  address    String?  @db.Text
+  created_at DateTime @default(now())
+
+  @@map("companies")
+}
+
+model Cable {
+  id          Int      @id @default(autoincrement())
+  description String   @unique @db.Text
+  created_at  DateTime @default(now())
+
+  @@map("cables")
+}
