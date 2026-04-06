@@ -88,6 +88,7 @@ async function createQuotation(req, res) {
     return res.status(201).json({ success: true, data: quotation });
   } catch (err) {
     console.error('[createQuotation]', err);
+    console.error("FULL ERROR:", err.stack);
     return res.status(500).json({ success: false, message: 'Internal server error' });
   }
 }
@@ -138,6 +139,7 @@ async function listQuotations(req, res) {
     return res.json({ success: true, count: quotations.length, data: quotations });
   } catch (err) {
     console.error('[listQuotations]', err);
+    console.error("FULL ERROR:", err.stack);
     return res.status(500).json({ success: false, message: 'Internal server error' });
   }
 }
@@ -163,6 +165,7 @@ async function getQuotation(req, res) {
     return res.json({ success: true, data: quotation });
   } catch (err) {
     console.error('[getQuotation]', err);
+    console.error("FULL ERROR:", err.stack);
     return res.status(500).json({ success: false, message: 'Internal server error' });
   }
 }
@@ -256,6 +259,7 @@ async function updateQuotation(req, res) {
     const msg = err?.message || 'Internal server error';
     const status = msg.startsWith('cable_items[') ? 400 : 500;
     console.error('[updateQuotation]', err);
+    console.error("FULL ERROR:", err.stack);
     return res.status(status).json({ success: false, message: msg });
   }
 }
@@ -299,6 +303,7 @@ async function getQuotationPdf(req, res) {
     return res.send(buffer);
   } catch (err) {
     console.error('[getQuotationPdf]', err);
+    console.error("FULL ERROR:", err.stack);
     return res.status(500).json({ success: false, message: 'Internal server error' });
   }
 }
@@ -327,6 +332,7 @@ async function resetQuotations(req, res) {
     return res.json({ success: true, message: 'Reset complete' });
   } catch (err) {
     console.error('[resetQuotations]', err);
+    console.error("FULL ERROR:", err.stack);
     return res.status(500).json({ success: false, message: 'Internal server error while resetting database' });
   }
 }

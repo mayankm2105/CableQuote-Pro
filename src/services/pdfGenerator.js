@@ -481,11 +481,15 @@ As per your inquiry we are pleased to quote our lowest possible prices along wit
  * @param {string} unitId - the company unit_id for file naming
  */
 async function generateQuotationPDF(data, unitId) {
-  ensurePdfDir();
-
   const browser = await puppeteer.launch({
     headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-gpu',
+      '--single-process'
+    ],
   });
 
   try {
@@ -507,9 +511,6 @@ async function generateQuotationPDF(data, unitId) {
     const tagSlug = (data.tag || `quotation_${data.id}`).replace(/\//g, '_');
     const safeUnitId = (unitId || 'UNKNOWN').replace(/[^a-zA-Z0-9_-]/g, '_');
     const filename = `${tagSlug}_${safeUnitId}.pdf`;
-    const filePath = path.join(PDF_DIR, filename);
-
-    fs.writeFileSync(filePath, pdfBuffer);
 
     return { buffer: pdfBuffer, filename };
   } finally {
