@@ -1,6 +1,7 @@
 'use strict';
 
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
+const chromium = require('@sparticuz/chromium');
 const path = require('path');
 const fs = require('fs');
 
@@ -482,14 +483,9 @@ As per your inquiry we are pleased to quote our lowest possible prices along wit
  */
 async function generateQuotationPDF(data, unitId) {
   const browser = await puppeteer.launch({
-    headless: true,
-    args: [
-      '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-dev-shm-usage',
-      '--disable-gpu',
-      '--single-process'
-    ],
+    args: chromium.args,
+    executablePath: await chromium.executablePath(),
+    headless: chromium.headless
   });
 
   try {
