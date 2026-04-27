@@ -137,7 +137,7 @@ function AddCable() {
                 ) : (
                   cables.map((cable, index) => (
                     <tr key={cable.id || index}>
-                      <td className="text-center">{cable.id || index + 1}</td>
+                      <td className="text-center">{index + 1}</td>
                       <td>{cable.description}</td>
                       <td className="text-center">
                         <button 
